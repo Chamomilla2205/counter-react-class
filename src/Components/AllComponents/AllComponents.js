@@ -19,7 +19,8 @@ class AllComponents extends Component {
         this.setState({result});
     }
 
-    onClickNumChange = (inputValue) => this.setState({inputValue})
+    onClickNumChange = (inputValue)=>
+        this.setState({inputValue})
 
 
     onSubmit = () => {
@@ -29,8 +30,27 @@ class AllComponents extends Component {
         let resultNum = +inputValue + result;
 
         resultNum < 0
-            ? this.setState({result:0})
+            ? this.setState({result: 0})
             : this.setState({result: resultNum})
+
+
+        //     this.setState(({inputValue,result})=>{
+        //
+        //         return {result: result + 5}
+        //     })
+        // this.setState(({inputValue,result})=>{
+        //
+        //         return {result: result + 5}
+        //     })
+        // this.setState(({inputValue,result})=>{
+        //
+        //         return {result: result + 5}
+        //     })
+        // this.setState(({inputValue,result})=>{
+        //
+        //         return {result: result + 5}
+        //     })
+
     }
 
     render() {
@@ -39,8 +59,8 @@ class AllComponents extends Component {
         return (
             <div>
                 <Result result = {result}/>
-                <Buttons onClickChange = {this.onClickChange} result = {result}/>
-                <Input onClickNumChange = {this.onClickNumChange} inputValue = {inputValue} onSubmit = {this.onSubmit}/>
+                <Buttons onClickChange = {this.onClickChange}/>
+                <Input onClickChangeNum = {this.onClickNumChange} inputValue = {inputValue} onSubmit = {this.onSubmit}/>
             </div>
         );
     }
