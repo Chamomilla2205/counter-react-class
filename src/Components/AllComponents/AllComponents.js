@@ -4,11 +4,14 @@ import Result from "../Result/Result";
 import Input from "../Input/Input";
 
 class AllComponents extends Component {
+
     state = {result:0, inputValue: ''}
 
     onClickChange = (num) => {
+
         const {result: num1} = this.state;
         let result = num1 + num;
+
         if (result < 0) {
             result = 0
         }
@@ -16,17 +19,20 @@ class AllComponents extends Component {
         this.setState({result});
     }
 
-    onClickNumChange = ({target:{value: inputValue}}) => {
+    onClickNumChange = (inputValue)=>
         this.setState({inputValue})
-    }
 
-    onSubmit = (ev) => {
+
+    onSubmit = () => {
+
         let {inputValue,result} = this.state;
+
         let resultNum = +inputValue + result;
+
         resultNum < 0
-            ? resultNum = 0
-            : resultNum
-        this.setState({result: resultNum})
+            ? this.setState({result: 0})
+            : this.setState({result: resultNum})
+
 
         //     this.setState(({inputValue,result})=>{
         //
@@ -52,7 +58,7 @@ class AllComponents extends Component {
 
         return (
             <div>
-                <h2><Result result = {result}/></h2>
+                <Result result = {result}/>
                 <Buttons onClickChange = {this.onClickChange}/>
                 <Input onClickChangeNum = {this.onClickNumChange} inputValue = {inputValue} onSubmit = {this.onSubmit}/>
             </div>
