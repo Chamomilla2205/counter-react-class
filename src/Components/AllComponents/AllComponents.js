@@ -5,7 +5,11 @@ import Input from "../Input/Input";
 
 class AllComponents extends Component {
 
-    state = {result:0, inputValue: ''}
+    state = {
+        result:0,
+        inputValue: '',
+        arrButt:[-1,1,100,-100,50,-50,100000000]
+    }
 
     onClickChange = (num) => {
 
@@ -54,13 +58,16 @@ class AllComponents extends Component {
     }
 
     render() {
-        let {result,inputValue} = this.state
+        let {result,inputValue,arrButt} = this.state
 
         return (
             <div>
                 <Result result = {result}/>
-                <Buttons onClickChange = {this.onClickChange}/>
+                {
+                    arrButt.map((value) => <Buttons value = {value} key = {value.id} onClickChange = {this.onClickChange} result = {result} arrButt = {arrButt}/> )
+                }
                 <Input onClickChangeNum = {this.onClickNumChange} inputValue = {inputValue} onSubmit = {this.onSubmit}/>
+                <button onClick={() => this.onClickChange(-result)}>RESET</button>
             </div>
         );
     }
