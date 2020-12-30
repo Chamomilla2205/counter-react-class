@@ -1,13 +1,16 @@
 import React from 'react';
-
-const Buttons = ({onClickChange,result:num,value}) => {
+import './Buttons.css'
+const Buttons = ({onClickChange,result:num,arrButt}) => {
 
     const handlerClick = (num) => {
         onClickChange(num)
     }
+
     return (
         <div>
-            <button value = {value} onClick={() => handlerClick(value)}>{value}</button>
+        {
+            arrButt.map((value) => <button value = {value} key = {value.id} className={'buttons'} onClick={() => handlerClick(value)}>{value}</button>)
+        }
         </div>
     );
 }

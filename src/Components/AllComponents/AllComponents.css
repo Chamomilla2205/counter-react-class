@@ -1,0 +1,9 @@
+.wrapper {
+    background: orange;
+    margin: auto;
+    margin-top: 250px;
+    width: 40%;
+    border: 3px solid purple;
+    border-radius: 30px;
+    padding: 30px;
+}

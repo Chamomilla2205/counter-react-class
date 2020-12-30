@@ -2,13 +2,13 @@ import React, {Component} from 'react';
 import Buttons from "../Buttons/Buttons";
 import Result from "../Result/Result";
 import Input from "../Input/Input";
-
+import './AllComponents.css'
 class AllComponents extends Component {
 
     state = {
         result:0,
         inputValue: '',
-        arrButt:[-1,1,100,-100,50,-50,100000000]
+        arrButt:[-1,1,100,-100,50,-50,25,10050]
     }
 
     onClickChange = (num) => {
@@ -61,11 +61,9 @@ class AllComponents extends Component {
         let {result,inputValue,arrButt} = this.state
 
         return (
-            <div>
+            <div className={'wrapper'}>
                 <Result result = {result}/>
-                {
-                    arrButt.map((value) => <Buttons value = {value} key = {value.id} onClickChange = {this.onClickChange} result = {result} arrButt = {arrButt}/> )
-                }
+                <Buttons onClickChange = {this.onClickChange} result = {result} arrButt = {arrButt}/>
                 <Input onClickChangeNum = {this.onClickNumChange} inputValue = {inputValue} onSubmit = {this.onSubmit}/>
                 <button onClick={() => this.onClickChange(-result)}>RESET</button>
             </div>
