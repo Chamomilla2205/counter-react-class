@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import Buttons from "../Buttons/Buttons";
+import Result from "../Result/Result";
+import Input from "../Input/Input";
 
 class AllComponents extends Component {
     state = {result:0, inputValue: ''}
@@ -9,8 +11,6 @@ class AllComponents extends Component {
         let result = num1 + num;
         if (result < 0) {
             result = 0
-        } else {
-            result
         }
 
         this.setState({result});
@@ -52,14 +52,9 @@ class AllComponents extends Component {
 
         return (
             <div>
-                <h2>Result: {result}</h2>
-                <button onClick={() => this.onClickChange(1)}>1</button>
-                <button onClick={() => this.onClickChange(-1)}>-1</button>
-                <button onClick={() => this.onClickChange(100)}>100</button>
-                <button onClick={() => this.onClickChange(-100)}>-100</button>
-                <button onClick={() => this.onClickChange(-this.state.result)}>RESET</button>
-                    <input type="number"  name={'someNumber'} onChange={this.onClickNumChange} value={inputValue}/>
-                    <button onClick={this.onSubmit}>SUBMIT</button>
+                <h2><Result result = {result}/></h2>
+                <Buttons onClickChange = {this.onClickChange}/>
+                <Input onClickChangeNum = {this.onClickNumChange} inputValue = {inputValue} onSubmit = {this.onSubmit}/>
             </div>
         );
     }
