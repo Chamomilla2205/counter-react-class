@@ -1,18 +1,18 @@
-import React, {Component} from 'react';
+import React from 'react';
 
-class Buttons extends Component {
-    render() {
-        let {onClickChange} = this.props;
+const Buttons = ({onClickChange,result:num}) => {
+    const onChange = (num) => {
+        onClickChange(num)
+    }
         return (
             <div>
-                <button onClick={() => onClickChange(1)}>1</button>
-                <button onClick={() => onClickChange(-1)}>-1</button>
-                <button onClick={() => onClickChange(100)}>100</button>
-                <button onClick={() => onClickChange(-100)}>-100</button>
-                <button onClick={() => onClickChange(-this.state.result)}>RESET</button>
+                <button onClick={() => onChange(1)}>1</button>
+                <button onClick={() => onChange(-1)}>-1</button>
+                <button onClick={() => onChange(100)}>100</button>
+                <button onClick={() => onChange(-100)}>-100</button>
+                <button onClick={() => onChange(-num)}>RESET</button>
             </div>
         );
-    }
 }
 
 export default Buttons;

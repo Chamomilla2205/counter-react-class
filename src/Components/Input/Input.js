@@ -1,15 +1,18 @@
-import React, {Component} from 'react';
+import React from 'react';
 
-class Input extends Component {
-    render() {
-        let {onClickNumChange,inputValue,onSubmit} = this.props
+const Input = ({onClickNumChange,inputValue,onSubmit}) => {
+    const onMySubmit = () => {
+        onSubmit()
+    }
+    const onMyChange = ({target:{value}}) => {
+        onClickNumChange(value)
+    }
         return (
             <div>
-                <input type="number"  name={'someNumber'} onChange={onClickNumChange} value={inputValue}/>
-                <button onClick={onSubmit}>SUBMIT</button>
+                <input type="number"  name={'someNumber'} onChange={onMyChange} value={inputValue}/>
+                <button onClick={onMySubmit}>SUBMIT</button>
             </div>
         );
-    }
 }
 
 export default Input;
